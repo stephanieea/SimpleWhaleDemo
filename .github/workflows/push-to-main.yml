@@ -50,4 +50,4 @@ jobs:
         env:
           DOCKER_IMAGE_TAG: ${{ secrets.DOCKER_HUB_USERNAME }}/simplewhale:latest
         run: |
-          . .github.scripts/mount-volume-write-stderr.sh
+          . .github/scripts/mount-volume-write-stderr.sh
