@@ -1,6 +1,7 @@
 #!/bin/bash
 docker pull ubuntu:latest
-docker run -v $(pwd):/home ubuntu cat doesnotexist.txt > log.txt 2> error-log.txt
+docker run --name=my_container -v $(pwd):/home --rm -i -t ubuntu bash
+docker exec my_container echo "yo" > log.txt 2> error-log.txt
 tree -a
 echo "LOG"
 cat log.txt
