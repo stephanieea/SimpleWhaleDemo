@@ -31,16 +31,16 @@ for site in $(jq -rc 'to_entries[] | [.key, .value.path // "."]' testing.json); 
 done
 wait
 tree -a
-# echo "LOG"
-# cat fre-log.txt
-# echo "ERROR"
-# cat fre-error-log.txt
-# echo "SITE ERRORS"
-# cat site-errors.txt
-# if [ -s site-errors.txt ]; then
-# 	echo "HAS_BUILD_ERRORS=true" >> $GITHUB_ENV
-# else
-# 	echo "HAS_BUILD_ERRORS=false" >> $GITHUB_ENV
-# fi
+echo "LOG"
+cat fre-log.txt
+echo "ERROR"
+cat fre-error-log.txt
+echo "SITE ERRORS"
+cat site-errors.txt
+if [ -s site-errors.txt ]; then
+	echo "HAS_BUILD_ERRORS=true" >> $GITHUB_ENV
+else
+	echo "HAS_BUILD_ERRORS=false" >> $GITHUB_ENV
+fi
 
 
