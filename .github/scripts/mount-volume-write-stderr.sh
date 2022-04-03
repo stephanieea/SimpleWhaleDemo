@@ -3,8 +3,9 @@ docker pull ubuntu:latest
 animals=("capybara" "rhino" "emu")
 for animal in ${animals[@]}; do
   echo $animal
-  .github/scripts/docker-command.sh $animal
+  .github/scripts/docker-command.sh $animal &
 done
+wait
 tree -a
 echo "CAPYBARA LOG"
 cat capybara-log.txt
