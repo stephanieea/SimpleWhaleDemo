@@ -31,22 +31,11 @@ for site in $(jq -rc 'to_entries[] | [.key, .value.path // "."]' testing.json); 
 done
 wait
 tree -a
-echo "fre LOG"
-cat fre-log.txt
-echo "fre ERROR LOG"
-cat fre-error-log.txt
 
-echo "bringatrailer LOG"
-cat bringatrailer-log.txt
-echo "bringatrailer ERROR LOG"
-cat bringatrailer-error-log.txt
+if [ -s site-errors.txt ]; then
+	echo "HAS_BUILD_ERRORS=false" >> $GITHUB_ENV
+else
+	echo "HAS_BUILD_ERRORS=true" >> $GITHUB_ENV
+fi
 
-echo "caranddriver LOG"
-cat caranddriver-log.txt
-echo "caranddriver ERROR LOG"
-cat caranddriver-error-log.txt
 
-echo "SITE ERRORS"
-cat site-errors.txt
-SITE_ERRORS=$(cat site-errors.txt)
-echo "ALL_SITE_ERRORS=$SITE_ERRORS" >> $GITHUB_ENV

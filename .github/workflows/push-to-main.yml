@@ -51,4 +51,4 @@ jobs:
         run: |
           . .github/scripts/mount-volume-write-stderr.sh
       -
-        run: echo ${{ env.SITE_ERRORS }}
+        run: echo ${{ env.HAS_BUILD_ERRORS }}
