@@ -22,7 +22,7 @@ docker pull ubuntu:latest
 # echo "emu ERROR LOG"
 # cat emu-error-log.txt
 
-for site in $(jq -rc 'to_entries[] | [.key, .value.path // "."]' manifest.json); do
+for site in $(jq -rc 'to_entries[] | [.key, .value.path // "."]' testing.json); do
 	SITE_NAME=$(echo $site | jq -r '.[0]')
 	SITE_PATH=$(echo $site | jq -r '.[1]')
 	# compile site assets in docker and run it in background
