@@ -1,10 +1,8 @@
 #!/bin/bash
 docker pull ubuntu:latest
-docker run --name my_volume -v $(pwd):/home ubuntu echo "YO"
-docker ps -aqf "name=my_volume"
+docker run -d --name my_volume -v $(pwd):/home ubuntu echo "YO"
 CONTAINER_ID=$(docker ps -aqf "name=my_volume")
-echo $CONTAINER_ID
-docker exec -d $CONTAINER_ID sh "touch hello.txt"
+docker exec $CONTAINER_ID sh "touch hello.txt"
 tree -a
 echo "LOG"
 cat log.txt
