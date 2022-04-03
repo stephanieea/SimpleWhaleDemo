@@ -1,0 +1,17 @@
+{
+	"fre": {
+		"routes": {
+			"/global-route/": {
+				"type": ""
+			}
+		}
+	},
+	"bringatrailer": {
+		"path": "sites/bringatrailer",
+		"pages": ["auctions/results.js", "content/index.js", "submit-a-vehicle/index.js", "watchlist/index.js", "account/bids-and-wins/index.js", "account/listings/complete.jsx", "account/listings/index.js", "account/listings/new.jsx", "account/profile/index.js", "account/notifications/index.js", "account/profile/edit/index.js"]
+	},
+	"caranddriver": {
+		"path": "sites/caranddriver",
+		"pages": ["_templates/vehicle-submodel/index.js", "_templates/vehicle-style/index.js", "_templates/vehicle-model/review-article/index.js", "_templates/vehicle-model/specs/index.js"]
+	}
+}
