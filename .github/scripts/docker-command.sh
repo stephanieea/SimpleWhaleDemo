@@ -6,6 +6,7 @@ SITE_PATH=${2}
 docker run -v $(pwd):/home --rm ubuntu cat yo.txt > $SITE_NAME-log.txt 2> $SITE_NAME-error-log.txt
 
 if [ -s $SITE_NAME-error-log.txt ]; then
+    echo "THERE IS AN ERROR LOG FOR $SITE_NAME"
     echo -n $SITE_NAME, >> site-errors.txt
 fi
 
