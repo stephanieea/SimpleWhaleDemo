@@ -33,9 +33,9 @@ wait
 tree -a
 cat site-errors.txt
 if [ -s site-errors.txt ]; then
-	echo "HAS_BUILD_ERRORS=false" >> $GITHUB_ENV
-else
 	echo "HAS_BUILD_ERRORS=true" >> $GITHUB_ENV
+else
+	echo "HAS_BUILD_ERRORS=false" >> $GITHUB_ENV
 fi
 
 
