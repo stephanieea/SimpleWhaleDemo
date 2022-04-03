@@ -31,7 +31,7 @@ for site in $(jq -rc 'to_entries[] | [.key, .value.path // "."]' testing.json); 
 done
 wait
 tree -a
-
+cat site-errors.txt
 if [ -s site-errors.txt ]; then
 	echo "HAS_BUILD_ERRORS=false" >> $GITHUB_ENV
 else
