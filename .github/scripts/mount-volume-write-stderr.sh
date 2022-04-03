@@ -1,6 +1,7 @@
 #!/bin/bash
 docker pull ubuntu:latest
 docker run --name my_volume -v $(pwd):/home --rm ubuntu echo "YO"
+docker ps -aqf "name=my_volume"
 CONTAINER_ID=$(docker ps -aqf "name=my_volume")
 echo $CONTAINER_ID
 docker exec -d $CONTAINER_ID sh "touch hello.txt"
