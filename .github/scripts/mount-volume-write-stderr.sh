@@ -21,13 +21,13 @@ docker pull ubuntu:latest
 # cat emu-log.txt
 # echo "emu ERROR LOG"
 # cat emu-error-log.txt
-SITE_ERRORS=""
+
 
 for site in $(jq -rc 'to_entries[] | [.key, .value.path // "."]' testing.json); do
 	SITE_NAME=$(echo $site | jq -r '.[0]')
 	SITE_PATH=$(echo $site | jq -r '.[1]')
 	# compile site assets in docker and run it in background
-	. .github/scripts/docker-command.sh $SITE_NAME $SITE_PATH
+	. .github/scripts/docker-command.sh $SITE_NAME $SITE_PATH &
 done
 wait
 tree -a
@@ -46,6 +46,7 @@ cat caranddriver-log.txt
 echo "caranddriver ERROR LOG"
 cat caranddriver-error-log.txt
 
-echo "SITE ERRORS END"
-echo $SITE_ERRORS
+echo "SITE ERRORS"
+cat site-errors.txt
+SITE_ERRORS=$(cat site-errors.txt)
 echo "ALL_SITE_ERRORS=$SITE_ERRORS" >> $GITHUB_ENV
