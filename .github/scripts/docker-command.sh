@@ -10,8 +10,11 @@ docker run --name $SCOPE_NAME -v $(pwd):/home --rm ubuntu cat doesnotexist.txt >
 #     echo $SCOPE_NAME, >> site-errors.txt
 # fi
 
+echo "can you see this"
+
 BUILD_ERRORS=$(grep -i such $SCOPE_NAME-error-log.txt) 
 if [[ $BUILD_ERRORS ]]; then
-    echo $SCOPE_NAME, >> site-errors.txt
+    echo "ERROR FOR $SCOPE_NAME:" >> site-errors.txt
+    echo $BUILD_ERRORS >> site-errors.txt
 fi
 
