@@ -29,14 +29,14 @@ for site in $(jq -rc 'to_entries[] | [.key, .value.path // "."]' testing.json); 
 	# compile site assets in docker and run it in background
 	.github/scripts/docker-command.sh $SCOPE_NAME $SITE_PATH &
 done
-wait
-tree -a
-echo "LOG"
-cat fre-log.txt
-echo "ERROR"
-cat fre-error-log.txt
-echo "SITE ERRORS"
-cat site-errors.txt
+
+for SCOPE_NAME in $(jq -rc 'keys[]' testing.json); do
+	echo $SCOPE_NAME
+	echo "::group::Compile Asset for Scope $SCOPE_NAME"
+	cat "$SCOPE_NAME-log.txt"
+	echo "::endgroup::"
+done
+
 if [ ! -s site-errors.txt ]; then
 	echo "HAS_BUILD_ERRORS=false" >> $GITHUB_ENV
 else
