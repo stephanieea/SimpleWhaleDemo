@@ -3,7 +3,7 @@
 SCOPE_NAME=${1}
 SITE_PATH=${2}
 
-docker run --name $SCOPE_NAME -v $(pwd):/home --rm ubuntu cat doesnotexist.txt > $SCOPE_NAME-log.txt 2> $SCOPE_NAME-error-log.txt
+docker run --name $SCOPE_NAME -v $(pwd):/home --rm ubuntu sleep 30 && cat doesnotexist.txt > $SCOPE_NAME-log.txt 2> $SCOPE_NAME-error-log.txt
 
 # if [ -s $SCOPE_NAME-error-log.txt ]; then
 #     echo "THERE IS AN ERROR LOG FOR $SCOPE_NAME"
