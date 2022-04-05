@@ -33,7 +33,7 @@ done
 for SCOPE_NAME in $(jq -rc 'keys[]' testing.json); do
 	echo $SCOPE_NAME
 	echo "::group::Compile Asset for Scope $SCOPE_NAME"
-	cat "$SCOPE_NAME-log.txt"
+	echo $(cat "$SCOPE_NAME-log.txt")
 	echo "::endgroup::"
 done
 
