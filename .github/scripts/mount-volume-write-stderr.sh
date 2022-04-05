@@ -41,9 +41,8 @@ if [ ! -s site-errors.txt ]; then
 	echo "HAS_BUILD_ERRORS=false" >> $GITHUB_ENV
 else
 	echo "HAS_BUILD_ERRORS=true" >> $GITHUB_ENV
-	echo 'BUILD_ERRORS<<EOF' >> $GITHUB_ENV
-	cat site-errors.txt >> $GITHUB_ENV
-	echo 'EOF' >> $GITHUB_ENV
 fi
-
+echo 'BUILD_ERRORS<<EOF' >> $GITHUB_ENV
+cat site-errors.txt >> $GITHUB_ENV
+echo 'EOF' >> $GITHUB_ENV
 
