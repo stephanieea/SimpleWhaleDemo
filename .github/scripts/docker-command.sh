@@ -3,11 +3,11 @@
 SCOPE_NAME=${1}
 SITE_PATH=${2}
 
-docker run --name $SITE_NAME -v $(pwd):/home --rm ubuntu cat doesnotexist.txt > $SITE_NAME-log.txt 2> $SITE_NAME-error-log.txt
+docker run --name $SCOPE_NAME -v $(pwd):/home --rm ubuntu cat doesnotexist.txt > $SCOPE_NAME-log.txt 2> $SCOPE_NAME-error-log.txt
 
-# if [ -s $SITE_NAME-error-log.txt ]; then
-#     echo "THERE IS AN ERROR LOG FOR $SITE_NAME"
-#     echo $SITE_NAME, >> site-errors.txt
+# if [ -s $SCOPE_NAME-error-log.txt ]; then
+#     echo "THERE IS AN ERROR LOG FOR $SCOPE_NAME"
+#     echo $SCOPE_NAME, >> site-errors.txt
 # fi
 
 BUILD_ERRORS=$(grep -i such $SCOPE_NAME-error-log.txt) 
